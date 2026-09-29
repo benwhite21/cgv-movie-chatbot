@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGV Cinemas - Trợ Lý Tư Vấn Phim AI</title>
+  <style>
+    :root {
+      --cgv-red: #e71a0f;
+      --cgv-dark-red: #c01208;
+      --cgv-gold: #d48806;
+      --bg-gray: #f4f5f7;
+      --text-dark: #222222;
+      --text-gray: #666666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e1e24 0%, #2b1010 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    .chat-wrapper {
+      width: 100%;
+      max-width: 480px;
+      height: 92vh;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .chat-header {
+      background: linear-gradient(90deg, var(--cgv-red), #b7150c);
+      color: #ffffff;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    .header-logo {
+      width: 42px;
+      height: 42px;
+      background: white;
+      color: var(--cgv-red);
+      font-weight: 900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      letter-spacing: -1px;
+    }
+
+    .header-info h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .header-info p {
+      font-size: 0.78rem;
+      opacity: 0.85;
+    }
+
+    /* Messages Area */
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background-color: var(--bg-gray);
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 11px 15px;
+      border-radius: 16px;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      word-break: break-word;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.bot {
+      background: #ffffff;
+      color: var(--text-dark);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      white-space: pre-wrap;
+    }
+
+    .message.user {
+      background: var(--cgv-red);
+      color: #ffffff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    /* Movie Carousel */
+    .carousel-container {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 6px 2px 14px 2px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      width: 100%;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      height: 6px;
+    }
+    .carousel-container::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+    .movie-card {
+      width: 185px;
+      min-width: 185px;
+      max-width: 185px;
+      height: 335px;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e2e4e8;
+      flex-shrink: 0;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 145px;
+      object-fit: cover;
+      background: #e9ecef;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .card-body {
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      background: #ffffff;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .card-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.25;
+    }
+
+    .rating-badge {
+      display: inline-block;
+      background: #fff8e6;
+      color: var(--cgv-gold);
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .card-genres {
+      font-size: 0.72rem;
+      color: var(--text-gray);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-overview {
+      font-size: 0.7rem;
+      color: #555555;
+      line-height: 1.3;
+      height: 36px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-top: 2px;
+    }
+
+    .card-btn {
+      width: 100%;
+      padding: 7px 0;
+      background: #ffffff;
+      color: var(--cgv-red);
+      border: 1.5px solid var(--cgv-red);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 4px;
+    }
+
+    .card-btn:hover {
+      background: var(--cgv-red);
+      color: #ffffff;
+    }
+
+    /* Showtimes List */
+    .showtimes-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .showtime-item {
+      background: white;
+      border-radius: 10px;
+      padding: 10px 12px;
+      border-left: 4px solid var(--cgv-red);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 0.82rem;
+    }
+
+    .showtime-item strong {
+      color: var(--text-dark);
+      font-size: 0.88rem;
+    }
+
+    .showtime-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+      color: var(--text-gray);
+    }
+
+    .showtime-tag {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Quick Reply Chips */
+    .quick-replies-bar {
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      background: #ffffff;
+      overflow-x: auto;
+      border-top: 1px solid #efefef;
+      flex-shrink: 0;
+    }
+
+    .quick-chip {
+      white-space: nowrap;
+      padding: 7px 14px;
+      background: #f7f8fa;
+      border: 1px solid #e2e4e8;
+      border-radius: 20px;
+      color: #444;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .quick-chip:hover {
+      background: #ffebe9;
+      border-color: var(--cgv-red);
+      color: var(--cgv-red);
+    }
+
+    /* Input Footer */
+    .chat-footer {
+      padding: 12px 16px;
+      background: #ffffff;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid #f0f0f0;
+      flex-shrink: 0;
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 24px;
+      outline: none;
+      font-size: 0.92rem;
+      transition: border 0.2s;
+    }
+
+    .chat-input:focus {
+      border-color: var(--cgv-red);
+    }
+
+    .send-btn {
+      background: var(--cgv-red);
+      color: #ffffff;
+      border: none;
+      padding: 0 20px;
+      border-radius: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .send-btn:hover {
+      background: var(--cgv-dark-red);
+    }
+  </style>
+</head>
+<body>
+
+<div class="chat-wrapper">
+  <!-- Header -->
+  <div class="chat-header">
+    <div class="header-logo">CGV</div>
+    <div class="header-info">
+      <h2>CGV Cinemas Assistant</h2>
+      <p>Trợ lý AI tư vấn phim & Lịch chiếu</p>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="chat-messages" id="messagesBox">
+    <div class="message bot">Xin chào! Em là trợ lý CGV Cinemas. Hôm nay anh/chị muốn tìm phim theo thể loại nào, hay cần tra cứu lịch chiếu và giá vé ạ?</div>
+  </div>
+
+  <!-- Quick Replies -->
+  <div class="quick-replies-bar" id="quickRepliesBox">
+    <div class="quick-chip" onclick="handleQuickClick('Phim hot đang chiếu')">🔥 Phim hot đang chiếu</div>
+    <div class="quick-chip" onclick="handleQuickClick('Gợi ý phim hành động')">💥 Phim hành động</div>
+    <div class="quick-chip" onclick="handleQuickClick('Bảng giá vé CGV')">🎫 Giá vé</div>
+    <div class="quick-chip" onclick="handleQuickClick('Lịch chiếu phim hôm nay')">🕒 Lịch chiếu</div>
+  </div>
+
+  <!-- Footer Input -->
+  <div class="chat-footer">
+    <input type="text" id="userInput" class="chat-input" placeholder="Nhập câu hỏi tại đây..." onkeypress="handleKeyPress(event)" />
+    <button class="send-btn" onclick="sendMessage()">Gửi</button>
+  </div>
+</div>
+
+<script>
+  const API_ENDPOINT = "http://127.0.0.1:8000/api/chat";
+  const messagesBox = document.getElementById("messagesBox");
+  const quickRepliesBox = document.getElementById("quickRepliesBox");
+  const userInput = document.getElementById("userInput");
+
+  function handleKeyPress(e) {
+    if (e.key === "Enter") sendMessage();
+  }
+
+  function handleQuickClick(text) {
+    userInput.value = text;
+    sendMessage();
+  }
+
+  async function sendMessage() {
+    const text = userInput.value.trim();
+    if (!text) return;
+
+    // 1. Render tin nhắn người dùng
+    appendMessage(text, "user");
+    userInput.value = "";
+    userInput.focus();
+
+    // 2. Gọi API Backend
+    try {
+      const response = await fetch(API_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+
+      if (!response.ok) throw new Error("HTTP error " + response.status);
+
+      const data = await response.json();
+      renderBotResponse(data);
+    } catch (err) {
+      appendMessage("Không thể kết nối đến máy chủ API! Hãy đảm bảo Backend đang chạy.", "bot");
+    }
+  }
+
+  function appendMessage(text, sender) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `message ${sender}`;
+    msgDiv.innerText = text;
+    messagesBox.appendChild(msgDiv);
+    scrollToBottom();
+  }
+
+  function renderBotResponse(data) {
+    // 1. Tin nhắn chữ
+    if (data.reply_text) {
+      appendMessage(data.reply_text, "bot");
+    }
+
+    // 2. Carousel thẻ phim
+    if (data.data_type === "movie_carousel" && data.movies && data.movies.length > 0) {
+      const carousel = document.createElement("div");
+      carousel.className = "carousel-container";
+
+      data.movies.forEach(movie => {
+        const card = document.createElement("div");
+        card.className = "movie-card";
+        const posterSrc = movie.poster_url || "https://via.placeholder.com/185x145?text=CGV+Cinema";
+
+        card.innerHTML = `
+          <img src="${posterSrc}" alt="${movie.title}" onerror="this.src='https://via.placeholder.com/185x145?text=No+Poster'" />
+          <div class="card-body">
+            <div class="card-meta">
+              <div class="card-title" title="${movie.title}">${movie.title}</div>
+              <div class="rating-badge">★ ${movie.rating > 0 ? movie.rating : 'Hot'}</div>
+              <div class="card-genres" title="${movie.genres}">${movie.genres}</div>
+              <div class="card-overview">${movie.overview || "Không có tóm tắt."}</div>
+            </div>
+            <button class="card-btn" onclick="handleQuickClick('Lịch chiếu phim ${movie.title.replace(/'/g, "\\'")}')">Xem lịch chiếu</button>
+          </div>
+        `;
+        carousel.appendChild(card);
+      });
+      messagesBox.appendChild(carousel);
+    }
+
+    // 3. Danh sách suất chiếu
+    if (data.data_type === "showtimes_list" && data.showtimes && data.showtimes.length > 0) {
+      const stBox = document.createElement("div");
+      stBox.className = "showtimes-box";
+
+      data.showtimes.forEach(st => {
+        const item = document.createElement("div");
+        item.className = "showtime-item";
+        item.innerHTML = `
+          <div><strong>${st.cinema}</strong> - <span>${st.title}</span></div>
+          <div class="showtime-meta">
+            <span>📅 ${st.date} | ⏰ <strong>${st.time}</strong></span>
+            <span class="showtime-tag">${st.format} - ${Number(st.price).toLocaleString('vi-VN')}đ</span>
+          </div>
+        `;
+        stBox.appendChild(item);
+      });
+      messagesBox.appendChild(stBox);
+    }
+
+    // 4. Cập nhật Quick Replies
+    if (data.quick_replies && data.quick_replies.length > 0) {
+      quickRepliesBox.innerHTML = "";
+      data.quick_replies.forEach(chipText => {
+        const chip = document.createElement("div");
+        chip.className = "quick-chip";
+        chip.innerText = chipText;
+        chip.onclick = () => handleQuickClick(chipText);
+        quickRepliesBox.appendChild(chip);
+      });
+    }
+
+    setTimeout(scrollToBottom, 50);
+  }
+
+  function scrollToBottom() {
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+  }
+</script>
+</body>
+</html>
