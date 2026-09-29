@@ -1,0 +1,684 @@
+[
+  {
+    "text": "Alo bot",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Cho mình xem lịch chiếu Backrooms: Thực Thể Quỷ Quyệt tại rạp CGV Mipec",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Backrooms: Thực Thể Quỷ Quyệt",
+        "start": 24,
+        "end": 53
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV Mipec",
+        "start": 62,
+        "end": 71
+      }
+    ]
+  },
+  {
+    "text": "Có phim tâm lý nào đang chiếu rạp hay không?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "tâm lý",
+        "start": 8,
+        "end": 14
+      }
+    ]
+  },
+  {
+    "text": "Rạp có bán trà sữa trân châu không?",
+    "intent": "khong_hieu",
+    "entities": []
+  },
+  {
+    "text": "Chào bạn, mình cần hỗ trợ",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Đang chiếu những phim hành động nào vậy bot?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "hành động",
+        "start": 22,
+        "end": 31
+      }
+    ]
+  },
+  {
+    "text": "Cách mua vé trên app CGV như thế nào?",
+    "intent": "dat_ve",
+    "entities": []
+  },
+  {
+    "text": "Tôi muốn đặt 2 vé xem phim",
+    "intent": "dat_ve",
+    "entities": []
+  },
+  {
+    "text": "Tối nay muốn xem phim thể loại kinh dị, giới thiệu giùm mình",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "kinh dị",
+        "start": 31,
+        "end": 38
+      }
+    ]
+  },
+  {
+    "text": "Dự báo thời tiết ngày mai ra sao",
+    "intent": "khong_hieu",
+    "entities": []
+  },
+  {
+    "text": "Viết cho tôi một bài thơ tình",
+    "intent": "khong_hieu",
+    "entities": []
+  },
+  {
+    "text": "Giá vé xem phim 2D bao nhiêu tiền vậy?",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Cổ phiếu hôm nay tăng hay giảm?",
+    "intent": "khong_hieu",
+    "entities": []
+  },
+  {
+    "text": "Hôm nay rạp có phim phiêu lưu nào đáng xem không?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "phiêu lưu",
+        "start": 20,
+        "end": 29
+      }
+    ]
+  },
+  {
+    "text": "Mình thích xem tâm lý, có bộ nào điểm cao không?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "tâm lý",
+        "start": 15,
+        "end": 21
+      }
+    ]
+  },
+  {
+    "text": "Mình muốn giữ chỗ 2 ghế hàng VIP",
+    "intent": "dat_ve",
+    "entities": []
+  },
+  {
+    "text": "Cho mình xem lịch chiếu Trái Tim Quái Thú tại rạp CGV Mipec",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Trái Tim Quái Thú",
+        "start": 24,
+        "end": 41
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV Mipec",
+        "start": 50,
+        "end": 59
+      }
+    ]
+  },
+  {
+    "text": "Tôi muốn đặt 2 vé xem phim",
+    "intent": "dat_ve",
+    "entities": []
+  },
+  {
+    "text": "After Impact có suất chiếu nào ở CGV Long Biên tối nay không?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "After Impact",
+        "start": 0,
+        "end": 12
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV Long Biên",
+        "start": 33,
+        "end": 46
+      }
+    ]
+  },
+  {
+    "text": "Cho mình hỏi bảng giá vé sinh viên tại CGV Bà Triệu",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Bot ơi giúp mình với",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Có phim kinh dị nào đang chiếu rạp hay không?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "kinh dị",
+        "start": 8,
+        "end": 15
+      }
+    ]
+  },
+  {
+    "text": "Rạp đang chiếu những phim gì hot nhất?",
+    "intent": "tim_phim",
+    "entities": []
+  },
+  {
+    "text": "Bot ơi giúp mình với",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Tư vấn giúp mình với",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Chào CGV",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Cho mình hỏi bảng giá vé sinh viên tại CGV Landmark 81",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Vé buổi tối sau 18h giá bao nhiêu?",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Cuối tuần này nên đi xem phim gì vậy bot?",
+    "intent": "tim_phim",
+    "entities": []
+  },
+  {
+    "text": "Cách mua vé trên app CGV như thế nào?",
+    "intent": "dat_ve",
+    "entities": []
+  },
+  {
+    "text": "Tư vấn phim hài hước hot nhất hiện nay",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "hài hước",
+        "start": 12,
+        "end": 20
+      }
+    ]
+  },
+  {
+    "text": "Lịch chiếu phim Kết Thúc ở CGV IPH hôm nay thế nào?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Kết Thúc",
+        "start": 16,
+        "end": 24
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV IPH",
+        "start": 27,
+        "end": 34
+      }
+    ]
+  },
+  {
+    "text": "Tối nay muốn xem phim thể loại phiêu lưu, giới thiệu giùm mình",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "phiêu lưu",
+        "start": 31,
+        "end": 40
+      }
+    ]
+  },
+  {
+    "text": "Lịch chiếu phim After Impact ở CGV Long Biên hôm nay thế nào?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "After Impact",
+        "start": 16,
+        "end": 28
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV Long Biên",
+        "start": 31,
+        "end": 44
+      }
+    ]
+  },
+  {
+    "text": "Đang chiếu những phim hoạt hình nào vậy bot?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "hoạt hình",
+        "start": 22,
+        "end": 31
+      }
+    ]
+  },
+  {
+    "text": "Tối nay muốn xem phim thể loại hoạt hình, giới thiệu giùm mình",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "hoạt hình",
+        "start": 31,
+        "end": 40
+      }
+    ]
+  },
+  {
+    "text": "Giá vé xem phim ở CGV Bà Triệu là bao nhiêu?",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Dự báo thời tiết ngày mai ra sao",
+    "intent": "khong_hieu",
+    "entities": []
+  },
+  {
+    "text": "Lịch chiếu phim Ngày Tàn Của Phố Oak ở CGV IPH hôm nay thế nào?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Ngày Tàn Của Phố Oak",
+        "start": 16,
+        "end": 36
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV IPH",
+        "start": 39,
+        "end": 46
+      }
+    ]
+  },
+  {
+    "text": "Hi bạn",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Rạp có bán trà sữa trân châu không?",
+    "intent": "khong_hieu",
+    "entities": []
+  },
+  {
+    "text": "Hi bạn",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Đang chiếu những phim hoạt hình nào vậy bot?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "hoạt hình",
+        "start": 22,
+        "end": 31
+      }
+    ]
+  },
+  {
+    "text": "Một cộng một bằng mấy?",
+    "intent": "khong_hieu",
+    "entities": []
+  },
+  {
+    "text": "Tư vấn giúp mình với",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Lịch chiếu phim Phát Bắn Cuối ở CGV IPH hôm nay thế nào?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Phát Bắn Cuối",
+        "start": 16,
+        "end": 29
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV IPH",
+        "start": 32,
+        "end": 39
+      }
+    ]
+  },
+  {
+    "text": "Gợi ý cho mình vài phim kinh dị với",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "kinh dị",
+        "start": 24,
+        "end": 31
+      }
+    ]
+  },
+  {
+    "text": "Cho mình hỏi bảng giá vé sinh viên tại CGV Bà Triệu",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Hello bot",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Vé rạp CGV Bà Triệu cuối tuần giá thế nào bạn?",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Hành Trình Của Moana có suất chiếu nào ở CGV Crescent Mall tối nay không?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Hành Trình Của Moana",
+        "start": 0,
+        "end": 20
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV Crescent Mall",
+        "start": 41,
+        "end": 58
+      }
+    ]
+  },
+  {
+    "text": "Cho mình hỏi bảng giá vé sinh viên tại CGV Crescent Mall",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Tư vấn phim tâm lý hot nhất hiện nay",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "tâm lý",
+        "start": 12,
+        "end": 18
+      }
+    ]
+  },
+  {
+    "text": "Chào bạn, mình cần hỗ trợ",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Cho mình hỏi bảng giá vé sinh viên tại CGV Mipec",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Cách mua vé trên app CGV như thế nào?",
+    "intent": "dat_ve",
+    "entities": []
+  },
+  {
+    "text": "Cho mình danh sách các phim đang chiếu rạp",
+    "intent": "tim_phim",
+    "entities": []
+  },
+  {
+    "text": "Lịch chiếu phim Zip Wire ở CGV Long Biên hôm nay thế nào?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Zip Wire",
+        "start": 16,
+        "end": 24
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV Long Biên",
+        "start": 27,
+        "end": 40
+      }
+    ]
+  },
+  {
+    "text": "Tư vấn phim hài hước hot nhất hiện nay",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "hài hước",
+        "start": 12,
+        "end": 20
+      }
+    ]
+  },
+  {
+    "text": "Đang chiếu những phim chiếu rạp nào vậy bot?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "chiếu rạp",
+        "start": 22,
+        "end": 31
+      }
+    ]
+  },
+  {
+    "text": "Hello bot",
+    "intent": "chao_hoi",
+    "entities": []
+  },
+  {
+    "text": "Một cộng một bằng mấy?",
+    "intent": "khong_hieu",
+    "entities": []
+  },
+  {
+    "text": "Tối nay muốn xem phim thể loại chiếu rạp, giới thiệu giùm mình",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "chiếu rạp",
+        "start": 31,
+        "end": 40
+      }
+    ]
+  },
+  {
+    "text": "Tư vấn phim phiêu lưu hot nhất hiện nay",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "phiêu lưu",
+        "start": 12,
+        "end": 21
+      }
+    ]
+  },
+  {
+    "text": "Mấy giờ có suất chiếu phim Ngày Tàn Của Phố Oak ở CGV IPH vậy?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Ngày Tàn Của Phố Oak",
+        "start": 27,
+        "end": 47
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV IPH",
+        "start": 50,
+        "end": 57
+      }
+    ]
+  },
+  {
+    "text": "Tra cứu suất chiếu của Tàu Buôn Người tại CGV Bà Triệu",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Tàu Buôn Người",
+        "start": 23,
+        "end": 37
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV Bà Triệu",
+        "start": 42,
+        "end": 54
+      }
+    ]
+  },
+  {
+    "text": "Hôm nay rạp có phim chiếu rạp nào đáng xem không?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "chiếu rạp",
+        "start": 20,
+        "end": 29
+      }
+    ]
+  },
+  {
+    "text": "Xem phim ở CGV IPH hết bao nhiêu tiền một vé?",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Có phim viễn tưởng nào đang chiếu rạp hay không?",
+    "intent": "tim_phim",
+    "entities": [
+      {
+        "entity": "genre",
+        "value": "viễn tưởng",
+        "start": 8,
+        "end": 18
+      }
+    ]
+  },
+  {
+    "text": "Cho mình hỏi bảng giá vé sinh viên tại CGV Crescent Mall",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Mua vé xem phim qua chatbot được không?",
+    "intent": "dat_ve",
+    "entities": []
+  },
+  {
+    "text": "Cho mình xem lịch chiếu The Love Hypothesis tại rạp CGV Bà Triệu",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "The Love Hypothesis",
+        "start": 24,
+        "end": 43
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV Bà Triệu",
+        "start": 52,
+        "end": 64
+      }
+    ]
+  },
+  {
+    "text": "Giá vé xem phim 2D bao nhiêu tiền vậy?",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  },
+  {
+    "text": "Mấy giờ có suất chiếu phim Kết Thúc ở CGV IPH vậy?",
+    "intent": "hoi_lich_chieu",
+    "entities": [
+      {
+        "entity": "movie",
+        "value": "Kết Thúc",
+        "start": 27,
+        "end": 35
+      },
+      {
+        "entity": "cinema",
+        "value": "CGV IPH",
+        "start": 38,
+        "end": 45
+      }
+    ]
+  },
+  {
+    "text": "Đặt vé suất 19h tối nay giúp mình",
+    "intent": "dat_ve",
+    "entities": []
+  },
+  {
+    "text": "Xem phòng chiếu IMAX giá vé bao nhiêu một người?",
+    "intent": "hoi_gia_ve",
+    "entities": []
+  }
+]
